@@ -125,7 +125,7 @@ for address in address_list:
                 geocoded = True
             
     # Every 500 addresses, save progress to file(in case of a failure so you have something!)
-    if len(results) % 500 == 0:
+    if len(results) % 50 == 0:
         pd.concat([data, pd.DataFrame(results)], axis=1).to_csv("{}_bak".format(outfile), index=False)
 
 #Merge results back into original data frame and output to outfile location
