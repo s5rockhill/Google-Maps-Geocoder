@@ -57,6 +57,12 @@ while True:
 #Pass address data to a list for geocoding
 address_list = data[address_field].tolist()
 
+#Remove all non-utf-8 characters from address_list
+new_list = []
+for line in address_list:
+	line = line.decode('utf-8', 'ignore').encode('utf-8')
+	new_list.append(line)
+
 
 #-----------------    Define Function     ------------------
 def get_google_results(address, api_key=None, return_full_response=False):
@@ -100,7 +106,7 @@ def get_google_results(address, api_key=None, return_full_response=False):
 #------------------ PROCESSING LOOP -----------------------------
 
 results = []
-for address in address_list:
+for address in new_list:
     #While the address geocoding is not finished
     geocoded = False
     while geocoded is not True:
@@ -129,7 +135,7 @@ for address in address_list:
         pd.concat([data, pd.DataFrame(results)], axis=1).to_csv("{}_bak".format(outfile), index=False)
 
 #Merge results back into original data frame and output to outfile location
-pd.concat([data, pd.DataFrame(results)], axis=1).to_csv(outfile, encoding='utf8', index=False)
+pd.concat([data, pd.DataFrame(results)], axis=1).to_csv(outfile, index=False)
 
 
 print
