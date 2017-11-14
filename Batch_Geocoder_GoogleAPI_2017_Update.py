@@ -1,3 +1,7 @@
+#Author: Sarah Rockhill
+#Questions: rockhills@michigan.gov
+#Latest version: https://github.com/s5rockhill/Google-Maps-Geocoder
+
 import sys
 sys.path.append('C:\\Python27\\ArcGIS10.4\\Lib\\site-packages')
 #Geocode addresses using Google Maps API
