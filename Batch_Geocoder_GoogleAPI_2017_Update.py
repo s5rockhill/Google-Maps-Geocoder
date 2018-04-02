@@ -43,7 +43,7 @@ RETURN_FULL_RESULTS = False
 #-----------------    Load Data     ------------------
 
 #Read the data to a Pandas Dataframe
-data = pd.read_csv(infile)
+data = pd.read_csv(infile, keep_default_na=False)
 
 #Indicate the name of the field in your dataset that contains addresses and verify address field is in input dataset
 while True:
